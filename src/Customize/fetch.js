@@ -8,7 +8,15 @@ const useFetch = (url) => {
 
     useEffect(() => {
         setTimeout(() => {
-            axios.get(url)
+            const options = {
+                method: 'GET',
+                url: url,
+                headers: {
+                    'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+                    'X-RapidAPI-Host': 'corona-virus-world-and-india-data.p.rapidapi.com'
+                }
+            };
+            axios.get(options)
                 .then(res => {
                     console.log(res)
                     let data = res.data.data ? res.data.data : []

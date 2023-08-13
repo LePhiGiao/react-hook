@@ -3,7 +3,7 @@ import useFetch from '../Customize/fetch'
 
 
 const Covid = () => {
-    const { data: dataCovid, isLoading, isError } = useFetch('https://covid-api.com/api/regions')
+    const { data: dataCovid, isLoading, isError } = useFetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api')
 
     return (
         <>
