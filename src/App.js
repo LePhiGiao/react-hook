@@ -4,10 +4,15 @@ import Nav from './views/Nav';
 import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
 import Covid from './views/Covid';
-import { CountDown, NewCountDown } from './views/CountDown';
+import Timer from './views/Timer';
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
-  const [name, setName] = useState('React')
   const [address, setAddress] = useState('')
   const [todos, setTodos] = useState([
     { id: 'todo1', title: 'Learn React', type: 'F8' },
@@ -21,7 +26,6 @@ function App() {
   }, [address])
 
   const handleEventClick = (event) => {
-    setName('REACT')
     if (!address) {
       alert('empty input')
       return;
@@ -38,30 +42,39 @@ function App() {
     newTodos = newTodos.filter(todo => todo.id !== id)
     setTodos(newTodos)
   }
-  const onTimeUp = () => {
-    alert('Time Up')
-  }
+
 
   return (
-    <div className="App">
-      {console.log('>>>>check Return')}
-      <header className="App-header">
-        <Nav />
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>HELLO WORLD WITH {name}</h2>
-        <CountDown onTimeUp={onTimeUp} />
-        <span>------------------------------</span>
-        <NewCountDown onTimeUp={onTimeUp} />
-        <Covid />
-        <Todo
-          todos={todos}
-          title='All todo'
-          handleDeleteTodo={handleDeleteTodo}
-        />
-        <input type='text' value={address} onChange={e => handleOnChangeInput(e)} />
-        <button type='button' onClick={(event) => handleEventClick(event)}>Click me!</button>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        {console.log('>>>>check Return')}
+        <header className="App-header">
+          <Nav />
+          <img src={logo} className="App-logo" alt="logo" />
+
+
+          <Routes>
+            <Route path='/' exact element={<Covid />} />
+            <Route path='/timer' element={<Timer />} />
+            <Route path='/todo' element={
+              (
+                <>
+                  <Todo
+                    todos={todos}
+                    title='All todo'
+                    handleDeleteTodo={handleDeleteTodo}
+                  />
+                  <input type='text' value={address} onChange={e => handleOnChangeInput(e)} />
+                  <button type='button' onClick={(event) => handleEventClick(event)}>Click me!</button>
+                </>
+              )
+            } />
+          </Routes>
+        </header>
+
+
+      </div>
+    </BrowserRouter>
   );
 }
 

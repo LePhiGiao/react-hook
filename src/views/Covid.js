@@ -3,18 +3,19 @@ import useFetch from '../Customize/fetch'
 
 
 const Covid = () => {
-    const { data: dataCovid, isLoading, isError } = useFetch('https://corona-virus-world-and-india-data.p.rapidapi.com/api')
+    const { data: dataCovid, isLoading, isError } = useFetch('https://disease.sh/v3/covid-19/countries')
 
     return (
         <>
             <h2>The Countries in the World</h2>
             <table>
-                {console.log('Check dataCovid: ', dataCovid)}
+                {/* {console.log('Check dataCovid: ', dataCovid)} */}
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>ISO</th>
-                        <th>NAME</th>
+                        <th>Country</th>
+                        <th>Cases</th>
+                        <th>Deaths</th>
+                        <th>Recovered</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,9 +23,10 @@ const Covid = () => {
                         dataCovid.map((item, index) => {
                             return (
                                 <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.iso}</td>
-                                    <td>{item.name}</td>
+                                    <td>{item.country}</td>
+                                    <td>{item.cases}</td>
+                                    <td>{item.deaths}</td>
+                                    <td>{item.recovered}</td>
                                 </tr>
                             )
                         })}
