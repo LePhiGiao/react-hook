@@ -7,6 +7,7 @@ const Nav = () => {
             <NavLink className={(navData) => (navData.isActive ? 'active' : '')} to="/" >Home</NavLink>
             <NavLink to="/timer">Timer App</NavLink>
             <NavLink to="/todo">Todos App</NavLink>
+            <NavLink to="/blog">Blog App</NavLink>
             <NavLink to="/youtube">Youtube App</NavLink>
         </div>
     )

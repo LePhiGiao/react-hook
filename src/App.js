@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
 import Covid from './views/Covid';
 import Timer from './views/Timer';
+import Blog from './views/Blog';
+import DetailBlog from './views/DetailBlog';
+
 
 import {
   BrowserRouter,
@@ -69,6 +72,8 @@ function App() {
                 </>
               )
             } />
+            <Route path='/blog' exact element={<Blog />} />
+            <Route path='/blog/:id' element={<DetailBlog />} />
           </Routes>
         </header>
 
