@@ -1,0 +1,15 @@
+.add-blog-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+
+    .add-blog-text {
+        margin: 10px 0;
+    }
+
+    .input-data {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+    }
+}

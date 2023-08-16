@@ -7,6 +7,7 @@ import Covid from './views/Covid';
 import Timer from './views/Timer';
 import Blog from './views/Blog';
 import DetailBlog from './views/DetailBlog';
+import AddNewBlog from './views/AddNewBlog';
 
 
 import {
@@ -74,6 +75,7 @@ function App() {
             } />
             <Route path='/blog' exact element={<Blog />} />
             <Route path='/blog/:id' element={<DetailBlog />} />
+            <Route path='/add-new-blog' element={<AddNewBlog />} />
           </Routes>
         </header>
 

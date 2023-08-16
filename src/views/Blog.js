@@ -1,9 +1,15 @@
 import useFetch from "../Customize/fetch"
 import './Blog.scss'
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Blog = () => {
     const { data: dataBlogs, isLoading } = useFetch('https://jsonplaceholder.typicode.com/posts')
+    const navigate = useNavigate()
+
+    const handleAddBlog = () => {
+        navigate('/add-new-blog')
+    }
 
     let newDataBlogs = []
     if (dataBlogs && dataBlogs.length > 0) {
@@ -11,6 +17,7 @@ const Blog = () => {
     }
     return (
         <>
+            <div><button className="btn-add-new" onClick={() => handleAddBlog()}>Add new Blog</button></div>
             <div className="blog-container">
                 {newDataBlogs && newDataBlogs.length > 0 && newDataBlogs.map(item => {
                     return (
